@@ -131,7 +131,7 @@ nexis-logix/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/sagur0239/nexis-logix.git
+git clone https://github.com/mdsagurali/nexis-logix.git
 cd nexis-logix
 ```
 
@@ -216,8 +216,8 @@ I enjoy building modern, secure, and scalable web applications using Django and 
 
 ### 🌐 Connect With Me
 
-* **GitHub:** https://github.com/sagur0239
-* **LinkedIn:** https://www.linkedin.com/in/md-sagur-ali-18a175354/
+* **GitHub:** https://github.com/mdsagurali
+* **LinkedIn:** https://www.linkedin.com/in/mdsagurali/
 
 ---
 
