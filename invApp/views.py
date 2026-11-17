@@ -42,7 +42,7 @@ def home(request):
 @login_required
 @never_cache
 def product_create_view(request):
-    form = ProductForm()
+    form = ProductForm(instance=product)
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
