@@ -43,4 +43,4 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'invApp/product_confirm_delete.html'  # আপনার ডিলিট কনফার্মেশন ফাইল নাম অনুযায়ী দেখে নেবেন
-    success_url = reverse_lazy('product_list')vv
+    success_url = reverse_lazy('product_list')
