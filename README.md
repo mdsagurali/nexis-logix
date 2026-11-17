@@ -1,63 +1,63 @@
-# NEXIS LOGIX
 
-### Inventory Management System
+# NEXIS LOGIX — Inventory Management System
 
-A Django-based inventory management application for managing products, monitoring inventory records, and handling user accounts through a web interface.
+A modern Django-based inventory management application designed to simplify product management, organize stock records, and manage inventory operations through a clean and user-friendly interface.
 
-<p>
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/Django-Framework-092E20?style=flat-square&logo=django&logoColor=white" alt="Django"/>
-  <img src="https://img.shields.io/badge/PostgreSQL-Database-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
-  <img src="https://img.shields.io/badge/Cloudinary-Media%20Storage-3448C5?style=flat-square" alt="Cloudinary"/>
-  <img src="https://img.shields.io/badge/Deployment-Render-46E3B7?style=flat-square&logo=render&logoColor=black" alt="Render"/>
-</p>
-
-**NEXIS LOGIX** is a web-based inventory management project developed with Python and Django. It provides functionality for managing products, maintaining inventory records, and handling user accounts.
-
-The project uses PostgreSQL for production database management and Cloudinary for profile image storage.
+NEXIS LOGIX provides secure user authentication, profile management, and complete product CRUD functionality using Python and Django.
 
 ---
 
 ## Overview
 
-Managing inventory manually can make product tracking and record management difficult.
+Managing product information manually can become difficult as inventory grows. NEXIS LOGIX provides a centralized system to manage product records efficiently.
 
-NEXIS LOGIX aims to simplify these operations through a centralized web application with user authentication and inventory management functionality.
+Users can securely access the application, create product entries, view inventory, update product information, and delete records.
 
-### Key Features
+## Features
 
-- **User Authentication** — User registration and login.
-- **Profile Management** — Manage user profile information.
-- **Image Upload** — Store profile images using Cloudinary.
-- **Product Management** — Add, view, update, and delete products.
-- **Inventory Dashboard** — View and manage product records.
-- **Database Integration** — PostgreSQL for production and SQLite for development.
-- **Responsive Interface** — Interface built with Bootstrap.
-- **Deployment Support** — Configured for deployment using Render.
+### Authentication & User Management
+- User registration and login.
+- Secure logout functionality.
+- Login-protected inventory pages.
+- User profile management.
+- Profile image and bio management.
+- Django password validation.
+- Safe post-login redirect handling.
 
----
+### Inventory Management
+- Create new products.
+- Display all available products.
+- Update existing product information.
+- Delete products with confirmation.
+- Unique SKU validation.
+- Product price validation.
+- Stock quantity management.
+- Supplier information management.
 
-## Screenshots
-
-Explore the project's screenshot collection:
-
-[View Project Screenshots](https://github.com/mdsagurali/nexis-logix/tree/main/screenshots)
+### Additional Features
+- Django ORM and database migrations.
+- Environment-based configuration.
+- Static file management with WhiteNoise.
+- Cloudinary integration for media storage.
+- Responsive web interface.
+- Automated application tests.
 
 ---
 
 ## Technology Stack
 
-| Category | Technologies |
+| Technology | Purpose |
 |---|---|
-| Programming Language | Python |
-| Backend Framework | Django |
-| Frontend | HTML5, CSS3, Bootstrap 5, JavaScript |
-| Production Database | PostgreSQL |
-| Development Database | SQLite |
-| Media Storage | Cloudinary |
-| Static File Handling | WhiteNoise |
-| Hosting | Render |
-| Version Control | Git & GitHub |
+| Python | Backend programming |
+| Django | Web framework |
+| Django ORM | Database operations |
+| HTML5 | Web page structure |
+| CSS3 | Styling |
+| Bootstrap | UI components |
+| JavaScript | Frontend interactions |
+| WhiteNoise | Static file serving |
+| Cloudinary | Media storage integration |
+| Git & GitHub | Version control |
 
 ---
 
@@ -66,29 +66,43 @@ Explore the project's screenshot collection:
 ```text
 nexis-logix/
 │
-├── authApp/             # Authentication and user-related functionality
-├── invApp/              # Inventory management functionality
-├── invProject/          # Django project configuration
-├── screenshots/         # Project screenshots
+├── authApp/
+│   ├── migrations/
+│   ├── tests.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── signals.py
+│   ├── urls.py
+│   └── views.py
 │
-├── manage.py            # Django management utility
-├── requirements.txt     # Python dependencies
-├── .gitignore
+├── invApp/
+│   ├── migrations/
+│   ├── templates/
+│   │   └── invApp/
+│   ├── tests.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+│
+├── invProject/
+│   ├── settings.py
+│   ├── urls.py
+│   └── ...
+│
+├── templates/
+│   └── accounts/
+│
+├── manage.py
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Getting Started
+## Installation & Setup
 
-Follow these steps to run the project locally.
-
-### Prerequisites
-
-- Python
-- pip
-- Git
-- A database configured for the project
+Follow these steps to run NEXIS LOGIX locally.
 
 ### 1. Clone the Repository
 
@@ -100,20 +114,18 @@ cd nexis-logix
 
 ### 2. Create a Virtual Environment
 
-**Linux / Ubuntu**
+**Linux / macOS**
 
 ```bash
-python3 -m venv .venv
-
-source .venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 **Windows**
 
-```powershell
-python -m venv .venv
-
-.venv\Scripts\activate
+```bash
+py -m venv venv
+venv\Scripts\activate
 ```
 
 ### 3. Install Dependencies
@@ -124,15 +136,27 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 4. Configure the Database
+### 4. Configure Environment Variables
 
-Configure the database settings according to the project's Django settings.
+Create a `.env` file in the project root directory.
 
-For local development, the project supports SQLite. PostgreSQL is used for production.
+Example:
 
-Configure any required environment variables and Cloudinary credentials before running the application.
+```env
+SECRET_KEY=your-secret-key
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
+DATABASE_URL=your-database-url
+```
 
-Never commit secret keys, database passwords, or API credentials to GitHub.
+If Cloudinary is configured in your settings, add the required Cloudinary credentials using the exact environment variable names expected by the project.
+
+**Important:**
+- Never upload `.env` to GitHub.
+- Never expose secret keys or database credentials.
+- Generate your own Django secret key.
+- Use `DEBUG=False` in production.
+- Configure a valid production database URL.
 
 ### 5. Apply Database Migrations
 
@@ -140,19 +164,25 @@ Never commit secret keys, database passwords, or API credentials to GitHub.
 python manage.py migrate
 ```
 
-### 6. Create an Administrator Account
+### 6. Create an Admin Account
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 7. Run the Development Server
+### 7. Collect Static Files
+
+```bash
+python manage.py collectstatic --noinput
+```
+
+### 8. Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Open the application in your browser:
+Open your browser:
 
 ```text
 http://127.0.0.1:8000/
@@ -160,72 +190,177 @@ http://127.0.0.1:8000/
 
 ---
 
-## Deployment
+## Application Routes
 
-The project has been deployed using the following services:
-
-| Service | Purpose |
+| Feature | URL |
 |---|---|
-| Render | Application hosting |
-| PostgreSQL | Production database |
-| Cloudinary | Profile image storage |
-| WhiteNoise | Static file serving |
+| Login | `/login/` |
+| Registration | `/register/` |
+| Logout | `/logout/` |
+| User Profile | `/profile/` |
+| Admin Panel | `/admin/` |
+| Inventory Dashboard | `/inv/` |
 
-Production deployment requires appropriate environment variables, database configuration, and static/media storage settings.
+Product CRUD routes are configured inside the inventory application.
+
+---
+
+## Product Model
+
+The Product model contains the following fields:
+
+| Field | Description |
+|---|---|
+| `product_id` | Primary key |
+| `name` | Product name |
+| `sku` | Unique product identifier |
+| `price` | Product price |
+| `quantity` | Available stock |
+| `supplier` | Supplier name |
+
+### Data Validation
+- SKU values must be unique.
+- Product prices cannot be negative.
+- Quantity uses a non-negative integer field.
+- Server-side form validation is applied.
+
+---
+
+## Testing
+
+NEXIS LOGIX includes automated tests for inventory and authentication functionality.
+
+Run all tests:
+
+```bash
+python manage.py test
+```
+
+Run inventory tests:
+
+```bash
+python manage.py test invApp
+```
+
+Run authentication tests:
+
+```bash
+python manage.py test authApp
+```
+
+### Test Coverage
+
+**Inventory Tests**
+- Product listing.
+- Product creation.
+- Product updating.
+- Product deletion.
+- Login protection.
+
+**Authentication & Profile Tests**
+- User registration.
+- Valid login.
+- Invalid login.
+- User logout.
+- Profile access protection.
+- Profile page functionality.
+
+### Latest Test Result
+
+```text
+Found 11 test(s).
+
+Ran 11 tests
+
+OK
+```
+
+All 11 tests passed in the latest reported local test run.
 
 ---
 
 ## Security Considerations
 
-The application includes:
+- Django authentication and authorization.
+- CSRF protection for form submissions.
+- Login-required decorators for protected views.
+- POST-based logout and delete operations.
+- Server-side form validation.
+- Environment-based secret management.
+- Safe redirect URL validation.
 
-- Django user authentication.
-- Login-protected views.
-- CSRF protection.
-- Environment-based configuration.
-- Cloud-based media storage.
-
-For production use, sensitive credentials must remain outside the source code, and Django's production security settings must be configured appropriately.
-
----
-
-## Future Improvements
-
-Potential areas for further development:
-
-- REST API integration using Django REST Framework.
-- Role-based access control.
-- Advanced inventory search and filtering.
-- Stock-level monitoring and low-stock alerts.
-- Inventory reporting and analytics.
-- Automated testing.
-- Docker-based deployment.
+Production deployment still requires a complete security configuration review.
 
 ---
 
-## About the Developer
+## Development Commands
+
+Check Django configuration:
+
+```bash
+python manage.py check
+```
+
+Check for model changes:
+
+```bash
+python manage.py makemigrations --check --dry-run
+```
+
+Create migrations:
+
+```bash
+python manage.py makemigrations
+```
+
+Apply migrations:
+
+```bash
+python manage.py migrate
+```
+
+Collect static files:
+
+```bash
+python manage.py collectstatic --noinput
+```
+
+Run automated tests:
+
+```bash
+python manage.py test
+```
+
+---
+
+## Project Status
+
+| Component | Status |
+|---|---|
+| User Authentication | Implemented |
+| Profile Management | Implemented |
+| Product CRUD | Implemented |
+| Database Migrations | Verified |
+| Static File Collection | Verified |
+| Automated Tests | 11/11 Passed |
+| Django System Check | Passed |
+
+*Status reflects the latest reported local verification.*
+
+---
+
+## Author
 
 **Md Sagur Ali**
 
 Python Backend Developer
 
-I enjoy building practical backend applications using Python and Django, with an interest in REST APIs, database design, application security, and deployment.
-
-**Connect with me:**
-
-- GitHub: [mdsagurali](https://github.com/mdsagurali)
-- LinkedIn: [Md Sagur Ali](https://www.linkedin.com/in/mdsagurali/)
-- Portfolio: [mdsagurali.github.io](https://mdsagurali.github.io/)
-- Email: [mdsagurali.bd@gmail.com](mailto:mdsagurali.bd@gmail.com)
+- **GitHub:** [@mdsagurali](https://github.com/mdsagurali)
+- **LinkedIn:** [Md Sagur Ali](https://www.linkedin.com/in/mdsagurali/)
+- **Portfolio:** [mdsagurali.github.io](https://mdsagurali.github.io/)
 
 ---
 
-<p align="center">
-  <strong>Built with Python and Django.</strong>
-  <br/>
-  <sub>Learning, building, testing, and improving.</sub>
-</p>
+## License
 
-<p align="center">
-  <a href="https://github.com/mdsagurali/nexis-logix">View Repository</a>
-</p>
+No license has been specified yet. All rights are reserved by default unless a license is added to this repository.
